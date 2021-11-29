@@ -1,0 +1,95 @@
+﻿@using MyCompany.Domain.Entities
+@model IQueryable<ApartmentEntity>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.Title;
+}
+
+
+<div>
+    <h1>Мои объявления</h1>
+    <div>
+        <h3>Апартаменты</h3>
+
+        @if (Model.Any())
+        {
+            <div class="div-box">
+                <form asp-area="" asp-controller="Account" asp-action="Login" method="post">
+                    <input type="submit" value="Войти" />
+                </form>
+
+            </div>
+            <div><input type="button" value="Create" onclick="location.href='@Url.Action("Edit2", "Shared")'" />КНОПОЧКА</div>
+            <div class="wrapper style1">
+                <div class="container">
+                    <div class="row gtr-200">
+                        <div class="col-10 col-10">
+                            <div class="row gtr-100">
+                                <div><input type="button" value="Create" onclick="location.href='@Url.Action("Edit2", "Shared")'" />КНОПОЧКА</div>
+                                @foreach (ApartmentEntity entity in Model)
+                                {
+                                    <div><input type="button" value="Create" onclick="location.href='@Url.Action("Edit2", "Shared")'" />КНОПОЧКА</div>
+                                    <div class="col-4">
+                                        <a asp-area="" asp-controller="MyAccount" asp-action="Index8" asp-route-id="@entity.ID" class="image fit">
+                                            <img src="~/images/@entity.TitleImagePath" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a asp-area="" asp-controller="MyAccount" asp-action="Index8" asp-route-id="@entity.ID" class="image fit">
+                                            @if (entity.Type_apart == "дом")
+                                            {
+                                                <h4>
+                                                    Коттедж, @($"{entity.Square}") м<sup><small>2</small></sup>, @($"{entity.Floor}") этажа, @if (entity.Rooms == 1)
+                                                    {<div col-8>@($"{entity.Rooms}") спальня </div>}
+                                                    else if (entity.Rooms >= 2 && entity.Rooms <= 4)
+                                                    {<div col-8>@($"{entity.Rooms}") спальни </div> }
+                                                    else if (entity.Rooms >= 5)
+                                                    { <div col-8>@($"{entity.Rooms}") спален </div>}
+                                                </h4>
+                                                <p>@if (entity.Region != "null")@($"{entity.Region}"), @if (entity.District != "null")@($"{entity.District}"), @if (entity.Area != "null")@($"{entity.Area}"), @($"{entity.Street}"), @($"{entity.Num}") </p>
+
+
+
+                                            }
+                                            else
+                                            {
+                                                <div class="col-4">
+                                                    <a asp-area="" asp-controller="MyAccount" asp-action="Index8" asp-route-id="@entity.ID" class="image fit">
+                                                        <img src="~/images/@entity.TitleImagePath" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="col-8">
+                                                    <a asp-area="" asp-controller="MyAccount" asp-action="Index8" asp-route-id="@entity.ID" class="image fit">
+                                                        <h4>@($"{entity.Rooms}")-комн. кв., @($"{entity.Square}") м<sup><small>2</small></sup>, @($"{entity.Floor}") этаж</h4>
+                                                        <p>ЖК</p>
+                                                        <p>Адрес</p>
+
+
+                                                    </a>
+                                                </div>
+                                            }
+                                            @if (entity.Type_price == "продажа")
+                                            {
+                                                <h4>@($"{entity.Price}") руб.</h4>
+                                            }
+                                            else
+                                            {
+                                                <h4>@($"{entity.Price}") руб./мес.</h4>
+                                            }
+                                        </a>
+                                    </div>
+
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>

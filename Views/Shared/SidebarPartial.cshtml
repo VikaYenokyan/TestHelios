@@ -1,0 +1,6 @@
+﻿@using MyCompany.Models.ViewComponents
+<div class="col-4 col-12-normal">
+    <cache>
+        @(await Component.InvokeAsync<SidebarViewComponent>())
+    </cache>
+</div>

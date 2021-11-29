@@ -1,0 +1,36 @@
+﻿@using MyCompany.Domain.Entities
+@model BuilderEntity
+
+
+<div>
+    <h1>
+        Застройщик
+    </h1>
+    <div class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-12 col-12">
+                    <div class="row gtr-150">
+                        <div class="col-6">
+                            <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                        </div>
+
+                        <div class="col-5">
+                            <h4>@Model.Name</h4>
+                            <h4> Год основания: @Model.Year</h4>
+                            <h4> Количество сданных домов: @Model.Rented</h4>
+                            <h4> Количество строящихся объектов: @Model.Build</h4>
+                            
+                        </div>
+                        <div class="col-8 col-9-wide" style="padding-left: 90px; height: 2060px; width: 790px;">
+                            <p>
+                                @Model.Text
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

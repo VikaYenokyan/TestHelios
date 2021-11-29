@@ -1,0 +1,40 @@
+﻿@model IQueryable<BuilderEntity>
+
+@if (Model?.Any() == true)
+{
+<div>
+    <a asp-area="" asp-controller="Builder" asp-action="Index7"  class="image fit">
+        <h3>Наши застройщики</h3>
+        </a>
+</div>
+    <div class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-10 col-10">
+                    <div class="row gtr-100">
+
+                        @foreach (BuilderEntity entity in Model)
+                        {
+                            @if (entity.Name == "ГК Гранель" || entity.Name == "Группа Самолет" || entity.Name == "ДСК-1")
+                            {
+                            <div class="col-4">
+                                <a asp-area="" asp-controller="Builder" asp-action="Index6" asp-route-id="@entity.ID" class="image fit">
+                                    <img src="~/images/@entity.TitleImagePath" alt="" />
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <a asp-area="" asp-controller="Builder" asp-action="Index6" asp-route-id="@entity.ID" class="image fit">
+                                    <h4>
+                                        @($"{entity.Name}")
+                                    </h4>
+                                    <p> @($"{entity.Build + entity.Rented}") объектов</p>
+                                </a>
+                            </div>
+                                }
+                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

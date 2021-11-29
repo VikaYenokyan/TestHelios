@@ -1,0 +1,50 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body class="right-sidebar is-preload">
+    <div id="page-wrapper">
+        @await Html.PartialAsync("HeaderPartial") 
+        <div id="main">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-8 col-12-mobile" id="content">
+
+                        @RenderBody()
+
+                        <div class="div-box">
+                            <form asp-area="" asp-controller="Account" asp-action="Login" method="post">
+                                <input type="submit" value="Войти" />
+                            </form>
+
+                        </div>
+
+
+                        <div class="div-box">
+                            <form asp-area="" asp-controller="Account" asp-action="Register" method="post">
+                                <input type="submit" value="Регистрация" />
+                            </form>
+                        </div>
+
+                        <div class="div-box">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                                <input type="submit" value="Выйти" />
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <div class="col-4 col-12-mobile" id="sidebar">
+                        @await Html.PartialAsync("SidebarPartial")
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        @await Html.PartialAsync("FooterPartial") 
+    </div>
+   @await Html.PartialAsync("ScriptsPartial") 
+</body>
+</html>

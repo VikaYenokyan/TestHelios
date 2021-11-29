@@ -1,0 +1,78 @@
+﻿@model ApartmentEntity
+@{ 
+    string strTitle = "Редактировать запись";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="Apartments" asp-action="Edit1" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="TitleImagePath" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="div-box">
+                <label asp-for="Region"></label>
+                <input asp-for="Region" />
+                <span asp-validation-for="Region"></span>
+            
+                <label asp-for="District"></label>
+                <input asp-for="District" />
+                <span asp-validation-for="District"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Area"></label>
+                <input asp-for="Area" />
+                <span asp-validation-for="Area"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Street"></label>
+                <input asp-for="Street" />
+                <span asp-validation-for="Street"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Num"></label>
+                <input asp-for="Num" />
+                <span asp-validation-for="Num"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Square"></label>
+                <input asp-for="Square" />
+                <span asp-validation-for="Square"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Rooms"></label>
+                <input asp-for="Rooms" />
+                <span asp-validation-for="Rooms"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Type_price"></label>
+                <input asp-for="Type_price" />
+                <span asp-validation-for="Type_price"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Type_apart"></label>
+                <input asp-for="Type_apart" />
+                <span asp-validation-for="Type_apart"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="TitleImagePath"></label>
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+                <div>
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                </div>
+            </div>
+
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>
+

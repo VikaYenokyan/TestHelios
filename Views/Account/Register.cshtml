@@ -1,0 +1,34 @@
+﻿@model RegisterViewModel
+@Html.ValidationSummary(true)
+
+<div>
+    <h1>Регистрация</h1>
+    <div class="div-box">
+        <form asp-area="" asp-controller="Account" asp-action="Register" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            
+            <div class="editor-label">
+
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+            </div>
+            <div>
+                <label asp-for="PasswordConfirm"></label>
+                <input asp-for="PasswordConfirm" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+
+            </div>
+            <div>
+                <input type="submit" value="Зарегистрироваться" />
+            </div>
+        </form>
+    </div>
+</div>

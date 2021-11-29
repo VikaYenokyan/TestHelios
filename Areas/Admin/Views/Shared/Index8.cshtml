@@ -1,0 +1,45 @@
+﻿
+@model IQueryable<CustomerEntity>
+
+
+<div>
+    <h1>Заявки</h1>
+    <div>
+        <div class="wrapper style1">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-10 col-10">
+                        <div class="row gtr-100">
+
+                            @foreach (CustomerEntity entity in Model)
+                            {
+
+
+                                <div class="col-8">
+                                    <a asp-area="" asp-controller="Customer" asp-action="Edit3" asp-route-id="@entity.ID" class="image fit">
+
+                                        <h4>
+                                            @($"{entity.Name}")
+
+                                        </h4>
+                                        <p>@($"{entity.Contact}")</p>
+
+
+
+                                    </a>
+
+                                </div>
+
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

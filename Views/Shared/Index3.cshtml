@@ -1,0 +1,50 @@
+﻿@using MyCompany.Domain.Entities
+@model IQueryable<ApartmentEntity>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.Title;
+}
+
+
+<div>
+
+    @if (Model.Any())
+    {
+        <div class="wrapper style1">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-10 col-10">
+                        <div class="row gtr-100">
+                            @foreach (ApartmentEntity entity in Model)
+                            {
+                                @if (entity.Type_price == "аренда" && entity.Type_apart == "дом")
+                                {
+                                    <div class="col-4">
+                                        <a asp-area="" asp-controller="ApartmentsArenda" asp-action="Index3" asp-route-id="@entity.ID" class="image fit">
+                                            <img src="~/images/@entity.TitleImagePath" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a asp-area="" asp-controller="ApartmentsArenda" asp-action="Index3" asp-route-id="@entity.ID" class="image fit">
+                                            <h4>Коттедж, @($"{entity.Square}") м<sup><small>2</small></sup>, @($"{entity.Floor}") этажа, @if (entity.Rooms == 1)
+                                            {<div col-8>@($"{entity.Rooms}") спальня </div>}
+                                            else if (entity.Rooms >= 2 && entity.Rooms <= 4)
+                                            {<div col-8>@($"{entity.Rooms}") спальни </div> }
+                                            else if (entity.Rooms >= 5) { <div col-8>@($"{entity.Rooms}") спален </div>}
+                                            </h4>
+                                            <p>@if (entity.Region != "null")@($"{entity.Region}"), @if (entity.District != "null")@($"{entity.District}"), @if (entity.Area != "null")@($"{entity.Area}"), @($"{entity.Street}"), @($"{entity.Num}") </p>
+                                           
+
+                                            <h4>@($"{entity.Price}") руб./мес.</h4>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

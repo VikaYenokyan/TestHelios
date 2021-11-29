@@ -1,0 +1,67 @@
+﻿@using MyCompany.Domain.Entities
+@model ApartmentEntity
+@{ 
+  
+}
+
+<div>
+    <h1>
+        Апартаменты
+    </h1>
+    <div class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-12 col-12">
+                    <div class="row gtr-150">
+                        <div class="col-6">
+                            <img class="image fit" src="~/images/@Model.TitleImagePath" />
+                        </div>
+                        <div class="col-6">
+                            <a asp-area="" asp-controller="ApartmentsArenda" asp-action="Show" asp-route-id="@Model.ID" class="image fit">
+                                @if (Model.Type_apart == "дом")
+                                {
+                                    <h4>
+                                        Коттедж, @($"{Model.Square}") м<sup><small>2</small></sup>, @($"{Model.Floor}") этажа, @if (Model.Rooms == 1)
+                                        {<div col-8>@($"{Model.Rooms}") спальня </div>}
+                                        else if (Model.Rooms >= 2 && Model.Rooms <= 4)
+                                        {<div col-8>@($"{Model.Rooms}") спальни </div> }
+                                        else if (Model.Rooms >= 5)
+                                        { <div col-8>@($"{Model.Rooms}") спален </div>}
+                                    </h4>
+                                    <p>@if (Model.Region != "null")@($"{Model.Region}"), @if (Model.District != "null")@($"{Model.District}"), @if (Model.Area != "null")@($"{Model.Area}"), @($"{Model.Street}"), @($"{Model.Num}") </p>
+
+
+
+                                }
+                                else
+                                {
+
+                                    <div class="col-8">
+                                        <a asp-area="" asp-controller="MyAccount" asp-action="Index8" asp-route-id="@Model.ID" class="image fit">
+                                            <h4>@($"{Model.Rooms}")-комн. кв., @($"{Model.Square}") м<sup><small>2</small></sup>, @($"{Model.Floor}") этаж</h4>
+                                            <p>ЖК</p>
+                                            <p>Адрес</p>
+
+
+                                        </a>
+                                    </div>
+                                }
+                                @if (Model.Type_price == "продажа")
+                                {
+                                    <h4>@($"{Model.Price}") руб.</h4>
+                                }
+                                else
+                                {
+                                    <h4>@($"{Model.Price}") руб./мес.</h4>
+                                }
+
+
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

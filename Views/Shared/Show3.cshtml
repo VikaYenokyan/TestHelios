@@ -1,0 +1,35 @@
+﻿@using MyCompany.Domain.Entities
+@model GKEntity
+
+
+<div>
+    <h1>
+        Жилой комплекс
+    </h1>
+    <div class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-12 col-12">
+                    <div class="row gtr-150">
+                        <div class="col-6">
+                            <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                        </div>
+
+                        <div class="col-5">
+                            <h4>@Model.Name</h4>
+                            <h4> Адрес: @Model.Region, @Model.District, @Model.Area, @Model.Street, @Model.Num</h4>
+                            
+
+                        </div>
+                        <div class="col-8 col-9-wide" style="padding-left: 90px; height: 2060px; width: 790px;">
+                            <p>
+                                @Model.Text
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model CustomerEntity
+@{
+    string strTitle = "Редактировать запись";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="" asp-controller="ForCall" asp-action="Edit3" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ID" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="div-box">
+
+
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+
+                <label asp-for="Contact"></label>
+                <input asp-for="Contact" />
+                <span asp-validation-for="Contact"></span>
+            </div>
+
+            <input type="submit" value="Подать заявку" />
+        </form>
+    </div>
+</div>
+

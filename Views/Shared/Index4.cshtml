@@ -1,0 +1,45 @@
+﻿@using MyCompany.Domain.Entities
+@model IQueryable<ApartmentEntity>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.Title;
+}
+
+
+<div>
+
+    @if (Model.Any())
+    {
+        <div class="wrapper style1">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-10 col-10">
+                        <div class="row gtr-100">
+                            @foreach (ApartmentEntity entity in Model)
+                            {
+                                @if (entity.Type_price == "продажа" && entity.Type_apart == "квартира")
+                                {
+                                    <div class="col-4">
+                                        <a asp-area="" asp-controller="ApartmentsBuy" asp-action="Index4" asp-route-id="@entity.ID" class="image fit">
+                                            <img src="~/images/@entity.TitleImagePath" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a asp-area="" asp-controller="ApartmentsBuy" asp-action="Index4" asp-route-id="@entity.ID" class="image fit">
+                                            <h4>@($"{entity.Rooms}")-комн. кв., @($"{entity.Square}") м<sup><small>2</small></sup>, @($"{entity.Floor}") этаж</h4>
+                                            <p>ЖК</p>
+                                            <p>Адрес</p>
+
+                                            <h4>@($"{entity.Price}") руб.</h4>
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

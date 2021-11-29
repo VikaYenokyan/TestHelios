@@ -1,0 +1,69 @@
+﻿@model IQueryable<ApartmentEntity>
+
+
+@{
+    string strTitle = "Панель администратора";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h1>@strTitle</h1>
+    <div>
+        <h3>Апартаменты</h3>
+
+        @if (Model.Any())
+        {
+    <div class="div-box">
+        <a asp-area="Admin" asp-controller="Apartments" asp-action="Edit1" asp-route-id="">Добавить апартаменты</a>
+        <a asp-area="Admin" asp-controller="Customer" asp-action="Index8" asp-route-id="">Просмотреть заявки</a>
+    </div>
+            <div class="wrapper style1">
+                <div class="container">
+                    <div class="row gtr-200">
+                        <div class="col-8 col-8">
+                            <div class="row gtr-100">
+                                @foreach (ApartmentEntity entity in Model)
+                                {
+                                    <div class="col-4">
+                                        <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.ID">
+                                            <img type="file" src="~/images/@entity.TitleImagePath" class="image fit" />
+                                        </a>
+                                    </div>
+                                    <div class="col-8">
+                                        <a asp-area="Admin" asp-controller="Apartments" asp-action="Edit1" asp-route-id="@entity.ID">редактировать</a>
+
+                                        <form style="display: inline-block;" id="form-@entity.ID" asp-area="Admin" asp-controller="Apartments" asp-action="Delete" method="post">
+                                            <input type="hidden" name="id" value="@entity.ID">
+                                            <a href="#" onclick="document.getElementById('form-@entity.ID').submit();">удалить</a>
+                                        </form>
+                                        <h4>@($"{entity.Rooms}")-комн. кв., @($"{entity.Square}") м2, @($"{entity.Floor}") этаж</h4>
+                                        <p>ЖК     </p>
+                                        <p>Адрес</p>
+
+                                        <h4>@($"{entity.Price}") руб.</h4>
+                                    </div>
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="div-box">
+                <h3>Редактировать страницы сайта</h3>
+                <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex">Главная</a>
+                <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageApartmentsArenda">Аренда</a>
+                <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageApartmentsBuy">Продажа</a>
+                <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts">Контакты</a>
+            </div>
+            <div class="div-box">
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                    <input type="submit" value="Выйти" />
+                </form>
+            </div>
+        }
+    </div>
+</div>
